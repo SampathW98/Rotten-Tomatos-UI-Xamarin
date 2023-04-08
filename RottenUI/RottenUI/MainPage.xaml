@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:RottenUI.ViewModel"
+             x:Class="RottenUI.MainPage"
+             BackgroundColor="#e8e8e8">
+
+    <ContentPage.BindingContext>
+        <viewModel:MainViewModel />
+    </ContentPage.BindingContext>
+    
+    <StackLayout>
+
+        <Grid ColumnDefinitions="*,auto,*" 
+              BackgroundColor="Blue" 
+              HeightRequest="100">
+            <Label Grid.Column="1" Text="abcd"/>
+        </Grid>
+
+        <CollectionView x:Name="MyCollectionView" 
+                        Margin="20,20,20,0" 
+                        ItemsSource="{Binding Movies}" SelectionMode="Single" SelectionChanged="OnItemSelected">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="0" Margin="0" CornerRadius="12">
+                        <Grid Padding="0"
+                              RowDefinitions="*,*"
+                              ColumnDefinitions="auto,*">
+                            <Image Aspect="AspectFill" Source="{Binding PosterUrl}" Margin="10" WidthRequest="100" HeightRequest="150" Grid.RowSpan="2"
+                                               HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image.Clip>
+                                    <RoundRectangleGeometry CornerRadius="10" Rect="00,00,100,150"/>
+                                </Image.Clip>
+                            </Image>
+
+                            <!--<Grid RowDefinitions="*,*" Grid.Column="1" Grid.RowSpan="2">
+                                <Label Text="Zootopia"/>
+                            </Grid>-->
+
+                            <StackLayout Grid.Column="1" Grid.Row="0" VerticalOptions="Center">
+                                <Label Text="{Binding Title}"
+                                       Style="{StaticResource MovieName}"
+                                       Margin="0,15,0,0"/>
+                                <Label Text="{Binding ReleaseDate}"
+                                       Style="{StaticResource SubText}"/>
+                            </StackLayout>
+
+                            <Grid Grid.Column="1" 
+                                  Grid.Row="1"
+                                  ColumnDefinitions="auto,auto" VerticalOptions="Center">
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="0,0,0,5">
+                                        <Image Source="rotten_popcorn"/>
+                                        <Label Text="{Binding AudienceScore}" 
+                                               Margin="0,2,0,0"
+                                               Style="{StaticResource MovieName}"/>
+                                    </StackLayout>
+                                    <Label Text="Audience" 
+                                           Margin="0,-5,0,40"
+                                           Style="{StaticResource SubText}"/>
+                                </StackLayout>
+
+                                <StackLayout Grid.Column="1" Margin="40,0">
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="0,0,0,5">
+                                        <Image Source="rotten_popcorn"/>
+                                        <Label Text="{Binding AudienceScore}" 
+                                               Margin="0,2,0,0"
+                                               Style="{StaticResource MovieName}"/>
+                                    </StackLayout>
+                                    <Label Text="Tomatometer" 
+                                           Margin="0,-5,0,40"
+                                           Style="{StaticResource SubText}"/>
+                                </StackLayout>
+                            </Grid>
+
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+        
+    </StackLayout>
+
+</ContentPage>
