@@ -13,14 +13,18 @@
     <StackLayout>
 
         <Grid ColumnDefinitions="*,auto,*" 
-              BackgroundColor="Blue" 
-              HeightRequest="100">
-            <Label Grid.Column="1" Text="abcd"/>
+              BackgroundColor="#FF6347" 
+              HeightRequest="50">
+            <Image Grid.Column="0" 
+                   Source="menu.png" WidthRequest="1" HeightRequest="1"/>
+            <Label Grid.Column="1" Text="IN THEATERS" HorizontalOptions="Center"  />
+            <Image Grid.Column="2" 
+                   Source="filter.png" WidthRequest="1" HeightRequest="1"/>
         </Grid>
 
         <CollectionView x:Name="MyCollectionView" 
-                        Margin="20,20,20,0" 
-                        ItemsSource="{Binding Movies}" SelectionMode="Single" SelectionChanged="OnItemSelected">
+                        Margin="20,0,20,0" 
+                        ItemsSource="{Binding Movies}" SelectionMode="Single" SelectionChanged="OnItemSelected" Grid.Row="1">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
             </CollectionView.ItemsLayout>

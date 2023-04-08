@@ -4,9 +4,11 @@
              x:Class="RottenUI.DetailsPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{StaticResource PageColor}"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:views="clr-namespace:RottenUI.Views"
              >
 
-    <Grid RowDefinitions="200,*">
+    <Grid RowDefinitions="200,*" RowSpacing="0">
         
         <Image Source="{Binding BackdropUrl}"
                Aspect="AspectFill"
@@ -23,6 +25,7 @@
               Grid.RowSpan="2"
               Margin="14,172,14,0"
               ColumnSpacing="0"
+              RowSpacing="0"
               ColumnDefinitions="150,*"
               RowDefinitions="138,46,46,*">
 
@@ -36,7 +39,22 @@
                 Grid.ColumnSpan="2"
                 BackgroundColor="{StaticResource ButtonColor}"
                 CornerRadius="0,0,6,6" />
+            
+            <Label Text="ADD YOUR RATING"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Style="{StaticResource ButtonText}"
+                   CharacterSpacing="1"/>
 
+            <!--<skia:SKCanvasView
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                BackgroundColor="Red"
+                PaintSurface="SKCanvasView_PaintSurface" />-->
+
+            <!--Movie Information-->
             <Grid Grid.Row="0" Grid.Column="1"
                   RowDefinitions="*,*">
                 <StackLayout Margin="14,0,0,0"
@@ -67,9 +85,9 @@
                                Margin="0,-5,0,0"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Column="1" Margin="14,8,0,0">
+                    <StackLayout Grid.Column="1" Margin="0,8,0,0">
                         <StackLayout Orientation="Horizontal">
-                            <Image Source="rotten_popcorn"/>
+                            <Image Source="rotten_tomato"/>
                             <Label Text="{Binding TomatometerScore}"
                                    Style="{StaticResource MovieName}" VerticalOptions="Center"/>
                         </StackLayout>
@@ -80,18 +98,19 @@
 
                 </Grid>
             </Grid>
-                  
-            
+
+            <views:DetailsSection Grid.Row="3" Grid.ColumnSpan="2" Margin="0,0,0,14"/>
+
         </Grid>
 
-        <Image HeightRequest="170"
+        <Image HeightRequest="180"
                Source="{Binding PosterUrl}"
                HorizontalOptions="Start"
                VerticalOptions="Start"
                Grid.RowSpan="2"
-               Margin="28,126,0,0">
+               Margin="28,116,0,0">
             <Image.Clip>
-                <RoundRectangleGeometry CornerRadius="6" Rect="00,00,115,170"/>
+                <RoundRectangleGeometry CornerRadius="6" Rect="00,00,120,180"/>
             </Image.Clip>
         </Image>
 
