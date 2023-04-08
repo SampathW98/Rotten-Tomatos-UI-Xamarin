@@ -2,11 +2,99 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RottenUI.DetailsPage"
-             Title="{Binding Title}">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource PageColor}"
+             >
 
-    
-    <Grid ColumnDefinitions="*,*">
+    <Grid RowDefinitions="200,*">
         
+        <Image Source="{Binding BackdropUrl}"
+               Aspect="AspectFill"
+               HeightRequest="200"/>
+
+        <Image Source="white_gradient"
+               Aspect="AspectFill"/>
+
+        <Image Source="play_button"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" Aspect="AspectFill" HeightRequest="50"/>
+
+        <Grid Grid.Row="0"
+              Grid.RowSpan="2"
+              Margin="14,172,14,0"
+              ColumnSpacing="0"
+              ColumnDefinitions="150,*"
+              RowDefinitions="138,46,46,*">
+
+            <BoxView
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                BackgroundColor="White"
+                CornerRadius="6,6,0,0" />
+            <BoxView
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                BackgroundColor="{StaticResource ButtonColor}"
+                CornerRadius="0,0,6,6" />
+
+            <Grid Grid.Row="0" Grid.Column="1"
+                  RowDefinitions="*,*">
+                <StackLayout Margin="14,0,0,0"
+                             VerticalOptions="Center" HorizontalOptions="Start">
+                    <Label Text="{Binding Title}"
+                           Style="{StaticResource MovieName}"/>
+                    <Label Text="{Binding ReleaseDate}"
+                           Style="{StaticResource SubText}"/>
+                </StackLayout>
+
+                <BoxView
+                    Margin="0,0,14,0"
+                    HeightRequest=".5"
+                    VerticalOptions="End"
+                    Color="{StaticResource SubTextColor}" />
+
+                <Grid Grid.Row="1"
+                      ColumnDefinitions="*,*">
+
+                    <StackLayout Margin="14,8,0,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="rotten_popcorn"/>
+                            <Label Text="{Binding AudienceScore}"
+                                   Style="{StaticResource MovieName}" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Label Text="Audience"
+                               Style="{StaticResource SubText}"
+                               Margin="0,-5,0,0"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Margin="14,8,0,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="rotten_popcorn"/>
+                            <Label Text="{Binding TomatometerScore}"
+                                   Style="{StaticResource MovieName}" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Label Text="Tomatometer"
+                               Style="{StaticResource SubText}"
+                               Margin="0,-5,0,0"/>
+                    </StackLayout>
+
+                </Grid>
+            </Grid>
+                  
+            
+        </Grid>
+
+        <Image HeightRequest="170"
+               Source="{Binding PosterUrl}"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Grid.RowSpan="2"
+               Margin="28,126,0,0">
+            <Image.Clip>
+                <RoundRectangleGeometry CornerRadius="6" Rect="00,00,115,170"/>
+            </Image.Clip>
+        </Image>
+
     </Grid>
     
     

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModel="clr-namespace:RottenUI.ViewModel"
              x:Class="RottenUI.MainPage"
+             NavigationPage.HasNavigationBar="False"
              BackgroundColor="#e8e8e8">
 
     <ContentPage.BindingContext>
@@ -48,10 +49,16 @@
                                 <Label Text="{Binding ReleaseDate}"
                                        Style="{StaticResource SubText}"/>
                             </StackLayout>
+                            <BoxView
+                                    Margin="0,0,14,0"
+                                    HeightRequest=".5"
+                                    VerticalOptions="End"
+                                Grid.Column="1"
+                                    Color="{StaticResource SubTextColor}" />
 
                             <Grid Grid.Column="1" 
                                   Grid.Row="1"
-                                  ColumnDefinitions="auto,auto" VerticalOptions="Center">
+                                  ColumnDefinitions="auto,auto" VerticalOptions="Center" Margin="0,10,0,0">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="0,0,0,5">
                                         <Image Source="rotten_popcorn"/>

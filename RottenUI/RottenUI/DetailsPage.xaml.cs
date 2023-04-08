@@ -16,15 +16,11 @@ namespace RottenUI
 	{
         public DetailsPage (Movie myMovie)
 		{
+			this.BindingContext = myMovie;
 			InitializeComponent ();
-            Title = myMovie.Title;
+            //Title = myMovie.Title;
+			
 		}
-
-        /*public DetailsPage(Movie movie)
-        {
-            Movie = movie;
-        }*/
-
 
     }
 }
